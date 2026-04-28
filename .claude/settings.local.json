@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(npx next *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(netstat -ano)",
+      "Bash(findstr \":3000\")",
+      "Bash(taskkill /PID 25636 /F)",
+      "PowerShell(Stop-Process -Id 25636 -Force)",
+      "WebFetch(domain:docs.google.com)",
+      "WebFetch(domain:sheets.googleapis.com)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(taskkill /PID 31756 /F)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(awk '{print $5}')",
+      "Bash(xargs -I{} taskkill /PID {} /F)",
+      "PowerShell($port3000 = netstat -ano | Select-String \":3000\\\\s\" | ForEach-Object { \\($_ -split '\\\\s+'\\)[-1] } | Sort-Object -Unique; $port3001 = netstat -ano | Select-String \":3001\\\\s\" | ForEach-Object { \\($_ -split '\\\\s+'\\)[-1] } | Sort-Object -Unique; $allPids = \\($port3000 + $port3001\\) | Where-Object { $_ -match '^\\\\d+$' } | Sort-Object -Unique; foreach \\($p in $allPids\\) { Stop-Process -Id $p -Force -ErrorAction SilentlyContinue; Write-Host \"Killed $p\" }; Start-Sleep -Seconds 2; netstat -ano | Select-String \":\\(3000|3001\\)\\\\s\")",
+      "Bash(curl -s http://localhost:3000/api/ads/metrics)",
+      "Bash(curl -s -X POST https://oauth2.googleapis.com/token -d client_id=339063173017-dp6cdris1c7rtulii0auem8829oulcq5.apps.googleusercontent.com -d client_secret=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 -d refresh_token=1//0h8mVS3pvMz-JCgYIARAAGBESNwF-L9Iru12yevG9Jw7Htq0CTTVFSyEOX53yjXy94rVqW7aWdrHAg218L6UlBshu6SO6k3LL8YE -d grant_type=refresh_token)",
+      "Bash(node -e ' *)",
+      "Bash(nslookup googleads.googleapis.com)",
+      "Bash(nslookup sheets.googleapis.com)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\" http://localhost:3000/)",
+      "Bash(curl -s -X POST http://localhost:3000/api/auth/login -H 'Content-Type: application/json' -d '{\"password\":\"synapse2026\"}' -i)",
+      "Bash(git init *)",
+      "Bash(echo 'node_modules/ *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
