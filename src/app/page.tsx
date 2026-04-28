@@ -6,15 +6,17 @@ import OverviewView from "@/views/OverviewView";
 import SheetsView from "@/views/SheetsView";
 import AdsView from "@/views/AdsView";
 import CalendarView from "@/views/CalendarView";
+import EditorialView from "@/views/EditorialView";
 import { useState } from "react";
 
-type NavId = "overview" | "sheets" | "ads" | "calendar";
+type NavId = "overview" | "sheets" | "ads" | "calendar" | "editorial";
 
 const VIEWS: Record<NavId, React.ReactNode> = {
   overview: <OverviewView />,
   sheets: <SheetsView />,
   ads: <AdsView />,
   calendar: <CalendarView />,
+  editorial: <EditorialView />,
 };
 
 export default function Dashboard() {

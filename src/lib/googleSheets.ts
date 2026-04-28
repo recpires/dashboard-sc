@@ -12,8 +12,9 @@ function spreadsheetId() {
   return id;
 }
 
-export async function getSheetNames(): Promise<{ title: string; sheetId: number }[]> {
-  const url = `${BASE}/${spreadsheetId()}?key=${key()}&fields=sheets.properties(title,sheetId)`;
+export async function getSheetNames(customId?: string): Promise<{ title: string; sheetId: number }[]> {
+  const id = customId || spreadsheetId();
+  const url = `${BASE}/${id}?key=${key()}&fields=sheets.properties(title,sheetId)`;
   const res = await fetch(url, { next: { revalidate: 30 } });
   if (!res.ok) throw new Error(`Sheets API: ${res.status} ${res.statusText}`);
   const json = await res.json();
@@ -23,8 +24,9 @@ export async function getSheetNames(): Promise<{ title: string; sheetId: number 
   }));
 }
 
-export async function getSheetData(range: string): Promise<string[][]> {
-  const url = `${BASE}/${spreadsheetId()}/values/${encodeURIComponent(range)}?key=${key()}`;
+export async function getSheetData(range: string, customId?: string): Promise<string[][]> {
+  const id = customId || spreadsheetId();
+  const url = `${BASE}/${id}/values/${encodeURIComponent(range)}?key=${key()}`;
   const res = await fetch(url, { next: { revalidate: 30 } });
   if (!res.ok) throw new Error(`Sheets API: ${res.status} ${res.statusText}`);
   const json = await res.json();

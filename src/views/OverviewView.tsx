@@ -26,6 +26,11 @@ export default function OverviewView() {
   const pad = isMobile ? "16px 14px 24px" : "20px 24px 28px";
   const gap = isMobile ? 14 : 18;
 
+  const tableRows = [
+    ["Campanha", "Canal", "Investimento", "Receita", "ROAS", "Status"],
+    ...sheetsTableData.map((d: any) => [d.campaign, d.canal, d.investimento, d.receita, d.roas, d.status])
+  ];
+
   return (
     <main style={{ flex: 1, overflowY: "auto", padding: pad, display: "flex", flexDirection: "column", gap }}>
       {/* Label */}
@@ -58,7 +63,7 @@ export default function OverviewView() {
             </div>
           </div>
           <div style={{ flex: 1, minHeight: 200, overflowX: "auto" }}>
-            {activeSection === "tabela" ? <SheetsTable data={sheetsTableData} /> : <div style={{ height: 220 }}><SheetsBarChart data={sheetsBarData} /></div>}
+            {activeSection === "tabela" ? <SheetsTable rows={tableRows} /> : <div style={{ height: 220 }}><SheetsBarChart data={sheetsBarData} /></div>}
           </div>
         </div>
 

@@ -29,6 +29,11 @@ const CalendarIcon = () => (
     <line x1="8" y1="2" x2="8" y2="6" /><line x1="16" y1="2" x2="16" y2="6" />
   </svg>
 );
+const EditorialIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 6h16M4 12h16M4 18h12" />
+  </svg>
+);
 const SettingsIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="3" />
@@ -54,6 +59,7 @@ const navItems: NavItem[] = [
   { id: "sheets", label: "Planilhas", icon: <SheetsIcon /> },
   { id: "ads", label: "Google Ads", icon: <AdsIcon /> },
   { id: "calendar", label: "Calendário IG", icon: <CalendarIcon /> },
+  { id: "editorial", label: "Calendário Editorial", icon: <EditorialIcon /> },
 ];
 
 type Props = { activeSection: string; onNav: (id: string) => void };
