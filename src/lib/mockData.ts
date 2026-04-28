@@ -65,7 +65,6 @@ export const instagramPosts = [
 export const sheetsTableData = [
   { campaign: "Brand Awareness Q2", canal: "Meta Ads", investimento: "R$ 4.200", receita: "R$ 18.900", roas: "4.5x", status: "ativo" },
   { campaign: "Lançamento Produto X", canal: "Google Ads", investimento: "R$ 6.800", receita: "R$ 34.000", roas: "5.0x", status: "ativo" },
-  { campaign: "Remarketing — Checkout", canal: "Meta Ads", investimento: "R$ 1.900", receita: "R$ 9.120", roas: "4.8x", status: "pausado" },
   { campaign: "Email Nurturing Abr", canal: "ActiveCampaign", investimento: "R$ 850", receita: "R$ 5.100", roas: "6.0x", status: "ativo" },
   { campaign: "SEO — Blog Posts", canal: "Orgânico", investimento: "R$ 2.100", receita: "R$ 14.700", roas: "7.0x", status: "ativo" },
 ];
