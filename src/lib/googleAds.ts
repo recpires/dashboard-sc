@@ -97,8 +97,7 @@ export async function getAdsMetrics() {
       metrics.conversions,
       metrics.ctr,
       metrics.average_cpc,
-      metrics.cost_micros,
-      metrics.conversion_rate
+      metrics.cost_micros
     FROM customer
     WHERE segments.date DURING LAST_30_DAYS
   `);
@@ -110,7 +109,7 @@ export async function getAdsMetrics() {
     conversions: Math.round(Number(m.conversions ?? 0)),
     ctr: (Number(m.ctr ?? 0) * 100).toFixed(1) + "%",
     cpc: "R$" + (Number(m.averageCpc ?? 0) / 1_000_000).toFixed(2),
-    convRate: (Number(m.conversionRate ?? 0) * 100).toFixed(1) + "%",
+    convRate: Number(m.clicks) > 0 ? ((Number(m.conversions ?? 0) / Number(m.clicks)) * 100).toFixed(1) + "%" : "0%",
     cost: "R$" + (Number(m.costMicros ?? 0) / 1_000_000).toFixed(0),
   };
 }
