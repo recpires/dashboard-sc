@@ -1,6 +1,14 @@
 const TOKEN_URL = "https://oauth2.googleapis.com/token";
 const ADS_BASE = "https://googleads.googleapis.com/v20";
 
+function dateRange30() {
+  const today = new Date();
+  const end = today.toISOString().slice(0, 10);
+  const start = new Date(today);
+  start.setDate(start.getDate() - 29);
+  return { start: start.toISOString().slice(0, 10), end };
+}
+
 async function getAccessToken(): Promise<string> {
   const res = await fetch(TOKEN_URL, {
     method: "POST",
@@ -53,6 +61,7 @@ async function adsQuery(query: string): Promise<Record<string, unknown>[]> {
 }
 
 export async function getAdsCampaigns() {
+  const { start, end } = dateRange30();
   const rows = await adsQuery(`
     SELECT
       campaign.id,
@@ -65,7 +74,7 @@ export async function getAdsCampaigns() {
       metrics.average_cpc,
       metrics.cost_micros
     FROM campaign
-    WHERE segments.date DURING LAST_30_DAYS
+    WHERE segments.date BETWEEN '${start}' AND '${end}'
       AND campaign.status != 'REMOVED'
     ORDER BY metrics.clicks DESC
     LIMIT 20
@@ -91,6 +100,7 @@ export async function getAdsCampaigns() {
 }
 
 export async function getAdsMetrics() {
+  const { start, end } = dateRange30();
   const rows = await adsQuery(`
     SELECT
       metrics.clicks,
@@ -99,7 +109,7 @@ export async function getAdsMetrics() {
       metrics.average_cpc,
       metrics.cost_micros
     FROM customer
-    WHERE segments.date DURING LAST_30_DAYS
+    WHERE segments.date BETWEEN '${start}' AND '${end}'
   `);
 
   if (!rows.length) return null;
@@ -115,13 +125,14 @@ export async function getAdsMetrics() {
 }
 
 export async function getAdsDailyChart() {
+  const { start, end } = dateRange30();
   const rows = await adsQuery(`
     SELECT
       segments.date,
       metrics.clicks,
       metrics.conversions
     FROM customer
-    WHERE segments.date DURING LAST_30_DAYS
+    WHERE segments.date BETWEEN '${start}' AND '${end}'
     ORDER BY segments.date ASC
   `);
 
